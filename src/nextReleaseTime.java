@@ -1,14 +1,16 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class nextReleaseTime {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//try to make sure that we can get correct next release time
 		nextReleaseTime nrtNotify = new nextReleaseTime();
 		String todayAns = "GROUP";
 		String[] guessAns = { "SCENE", "MAPLE" };
-		String msg = nrtNotify.notify(nrtNotify.getNextReleaseTime(), true, true, todayAns, guessAns);
+		String msg = nrtNotify.notify(nrtNotify.getNextReleaseTime(), true, false, todayAns, guessAns);
 	}
 
 	public String getNextReleaseTime() {
@@ -29,14 +31,16 @@ public class nextReleaseTime {
 	public String notify(String releaseTime, boolean isAnsCorrect, boolean isFinish, String ans, String[] guessAns) {
 		// return different response based on different condition
 		String responseMsg = null;
+		boolean isActive = false;
+
 		if (isFinish) {
 			responseMsg = "Too Bad! Todays word is [ " + ans + " ] !";
 
 			if (isAnsCorrect) {
 				responseMsg = "Congratulations! You guessed [ " + ans + " ] correctly!";
-			}
 
-			responseMsg += "\nThe next release time is  " + releaseTime;
+			}
+			isActive = true;
 		} else {
 			responseMsg = "The user's current guess result is : ";
 			for (String item : guessAns) {
@@ -44,6 +48,24 @@ public class nextReleaseTime {
 			}
 		}
 		System.out.println(responseMsg);
+		this.displayNextReleaseTime(isActive);
+
 		return responseMsg;
+	}
+
+	public void displayNextReleaseTime(boolean isActive){
+		if(isActive){
+			TimerTask timerTask = new TimerTask() {
+
+				@Override
+				public void run() {
+
+					System.out.println("The Next Release Time is : "+new nextReleaseTime().getNextReleaseTime());
+				}
+			};
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(timerTask,0,1000);
+		}
+
 	}
 }
