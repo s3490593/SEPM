@@ -12,7 +12,7 @@ public class WordSelector {
     public WordSelector(){
     }
 
-    public void createDictionary() throws IOException {
+    public List createDictionary() throws IOException {
         // load data from file
         BufferedReader reader = new BufferedReader(new FileReader("dictionary.txt"));
         String line = reader.readLine();
@@ -23,9 +23,11 @@ public class WordSelector {
         }
 
         reader.close();
+        return dictionary;
     }
 
-    public String selectRandomWord(List dictionary){
+    public String selectRandomWord(List dictionary) throws IOException {
+        createDictionary();
         int randomValue = (int)(Math.random() * dictionary.size());
         String todaysWord = (String) dictionary.get(randomValue);
         for (int i = 0; i < usedWords.size(); i++){
@@ -36,12 +38,5 @@ public class WordSelector {
         }
         usedWords.add(todaysWord);
         return todaysWord;
-    }
-
-    public static void main(String[] args) throws IOException {
-        WordSelector ws = new WordSelector();
-        ws.createDictionary();
-        // Call below at the start of each day in driver class:
-        System.out.println(ws.selectRandomWord(ws.dictionary));
     }
 }

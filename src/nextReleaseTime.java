@@ -10,7 +10,7 @@ public class nextReleaseTime {
 		nextReleaseTime nrtNotify = new nextReleaseTime();
 		String todayAns = "GROUP";
 		String[] guessAns = { "SCENE", "MAPLE" };
-		String msg = nrtNotify.notify(nrtNotify.getNextReleaseTime(), true, false, todayAns, guessAns);
+		String msg = nrtNotify.notify(nrtNotify.getNextReleaseTime(), true, true, todayAns, guessAns);
 	}
 
 	public String getNextReleaseTime() {
