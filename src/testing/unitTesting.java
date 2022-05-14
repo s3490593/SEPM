@@ -6,11 +6,12 @@ public class unitTesting {
 
     String userInput;
     nextReleaseTime nrtNotify;
-
+    ValidWord validWord;
     @BeforeEach
     void setup(){
         userInput = null;
         nrtNotify = new nextReleaseTime();
+        validWord = new ValidWord();
     }
 
     @Test
@@ -81,5 +82,21 @@ public class unitTesting {
     @Test
     public void PBI24_T2_priorGamesInaccessible_gameIncomplete(){
         // In results page
+    }
+
+    @Test
+    public void PBI29_T1_isWordValid_WordExist(){
+        userInput = "greet";
+        boolean expect = true;
+        boolean actual = validWord.checkValid(userInput);
+        assertEquals(expect,actual,"Testing the word is exist in the dictionary");
+    }
+
+    @Test
+    public void PBI29_T2_isWordValid_WordNotExist(){
+        userInput = "aaaaa";
+        boolean expect=  false;
+        boolean actual = validWord.checkValid(userInput);
+        assertEquals(expect,actual,"Testing the word is not exist in the dictionary");
     }
 }
