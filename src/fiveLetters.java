@@ -4,16 +4,13 @@ import java.util.Scanner;
 public class fiveLetters {
 
     // input a guess which must be five letters. Validation when calling class
-    public static String userGuess(String guess) throws IOException {
+    public static String userGuess(String guess) {
 
         // creating dictionary for accepting input
         WordSelector ws = new WordSelector();
-        ws.createDictionary();
-
-//        Scanner userInput = new Scanner(System.in);
-//
-//        System.out.println("Please input a 5 letter guess:");
-//        String guess = userInput.next();
+        try {
+            ws.createDictionary();
+        } catch (IOException ioException){};
 
         if (guess.length() != 5) {
             System.out.println("Guess must be 5 letters");
