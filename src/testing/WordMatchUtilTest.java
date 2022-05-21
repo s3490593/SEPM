@@ -16,7 +16,12 @@ class WordMatchUtilTest {
         str[3] = "n";
         str[4] = "y";
 
+        String[] expectStr = str.clone();
+
+        expectStr[0]= "\u001B[33m"+expectStr[0]+"\u001B[0m";
+        expectStr[4]= "\u001B[32m"+expectStr[4]+"\u001B[0m";
+        String expectResult = String.join("",expectStr);
         String result=String.join("", WordMatchUtil.doMatch(str,"messy"));
-        System.out.println(result);
+        assertEquals(expectResult, result);
     }
 }

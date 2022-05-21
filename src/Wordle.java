@@ -27,6 +27,7 @@ public class Wordle {
 
         System.out.println("Random word: " + todaysWord);
 
+        long startTime = System.currentTimeMillis();
         Scanner keyboard = new Scanner(System.in);
 
         StringBuilder temp;
@@ -38,8 +39,9 @@ public class Wordle {
             temp = new StringBuilder();
         }
 
-
+        int attempt = 0;
         for (int turn = 0; turn < 10; turn++) {
+            attempt+=1;
             String guess = null;
             do {
                 if(guessedWords.size()!=0 && guessedWords!=null) {
@@ -58,6 +60,9 @@ public class Wordle {
 
                 System.out.println(String.join("",userGuess));
                 System.out.println("You guessed correctly!");
+                long endTime = System.currentTimeMillis();
+                Double totalTime = Double.parseDouble((String.valueOf((endTime-startTime)/1000)));
+                GameResult.showResult(todaysWord,attempt,totalTime);
                 nextReleaseTime r = new nextReleaseTime();
                 String countdown = r.notify(r.getNextReleaseTime(), true, true, todaysWord, userGuess);
                 break;

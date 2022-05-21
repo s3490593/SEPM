@@ -16,8 +16,17 @@ class ColourUtilTest {
         str[2] = "l";
         str[3] = "l";
         str[4] = "o";
+
+        String[] expectStr = str.clone();
+
+        expectStr[1]= "\u001B[33m"+expectStr[1]+"\u001B[0m";
+        expectStr[2]= "\u001B[33m"+expectStr[2]+"\u001B[0m";
+        expectStr[3]= "\u001B[33m"+expectStr[3]+"\u001B[0m";
+
+        String expectResult = String.join("",expectStr);
         String result=String.join("", ColourUtil.coloring(str,1,3,"YELLOW"));
-        System.out.println(result);
+
+        assertEquals(expectResult, result);
 
     }
 }
