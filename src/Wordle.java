@@ -9,10 +9,7 @@ import java.util.Scanner;
 
 public class Wordle {
 
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_GREY = "\u001B[37m";
-    public static final String ANSI_RESET = "\u001B[0m";
+
 
     static WordSelector ws = new WordSelector();
 
@@ -57,7 +54,6 @@ public class Wordle {
             if (guess.equals(todaysWord)){
                 guessedWords.clear();
 
-//                System.out.println(ANSI_GREEN + guess +ANSI_RESET);
                 userGuess = ColourUtil.coloring(userGuess,0, userGuess.length-1, "GREEN");
 
 
@@ -71,22 +67,11 @@ public class Wordle {
                 //check all letters in word
                 userGuess = WordMatchUtil.doMatch(userGuess,todaysWord);
                 guessedWords.add(String.join("",userGuess));
-//                char c = guess.charAt(0);
-//                for (int i = todaysWord.indexOf(c); i >= 0; i = todaysWord.indexOf(c, i + 1)) {
-//                    temp.setCharAt(i, c);
-//                }
+
                 System.out.println("Else");
             }
 
 
-//            if (guess.length() != 1) {
-//                System.out.println("Guesses must each be a single letter.");
-//                continue;
-//            }
-
-
-
-//            System.out.println(ANSI_GREY + temp.toString() +ANSI_RESET);
         }
 
     }}
