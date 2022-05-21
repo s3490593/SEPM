@@ -56,8 +56,7 @@ public class Wordle {
 
                 userGuess = ColourUtil.coloring(userGuess,0, userGuess.length-1, "GREEN");
 
-
-                System.out.println(guess);
+                System.out.println(String.join("",userGuess));
                 System.out.println("You guessed correctly!");
                 nextReleaseTime r = new nextReleaseTime();
                 String countdown = r.notify(r.getNextReleaseTime(), true, true, todaysWord, userGuess);
