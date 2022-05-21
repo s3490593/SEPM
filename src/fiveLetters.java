@@ -10,7 +10,9 @@ public class fiveLetters {
         WordSelector ws = new WordSelector();
         try {
             ws.createDictionary();
-        } catch (IOException ioException){};
+        } catch (Exception e){
+            e.printStackTrace();
+        };
 
         if (guess.length() != 5) {
             System.out.println("Guess must be 5 letters");

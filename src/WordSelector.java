@@ -12,17 +12,29 @@ public class WordSelector {
     public WordSelector(){
     }
 
-    public List createDictionary() throws IOException {
+    public List createDictionary() {
         // load data from file
-        BufferedReader reader = new BufferedReader(new FileReader("dictionary.txt"));
-        String line = reader.readLine();
+        BufferedReader reader = null;
+        try{
+            reader = new BufferedReader(new FileReader("SEPM/dictionary.txt"));
+            String line = reader.readLine();
 
-        while (line != null) {
-            dictionary.add(line);
-            line = reader.readLine();
+            while (line != null) {
+                dictionary.add(line);
+                line = reader.readLine();
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        reader.close();
+
         return dictionary;
     }
 

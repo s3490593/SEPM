@@ -9,8 +9,8 @@ public class nextReleaseTime {
 		//try to make sure that we can get correct next release time
 		nextReleaseTime nrtNotify = new nextReleaseTime();
 		String todayAns = "GROUP";
-		String[] guessAns = { "SCENE", "MAPLE" };
-		String msg = nrtNotify.notify(nrtNotify.getNextReleaseTime(), true, true, todayAns, guessAns);
+//		String[] guessAns = { "SCENE", "MAPLE" };
+//		String msg = nrtNotify.notify(nrtNotify.getNextReleaseTime(), true, true, todayAns, guessAns);
 	}
 
 	public String getNextReleaseTime() {
