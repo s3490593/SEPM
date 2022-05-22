@@ -56,6 +56,43 @@ public class unitTesting {
         assertEquals(expectMsg, actualMsg);
     }
     @Test
+    public void PBI3_T1_gamePlayed_correct(){
+        TextualStatistics.calculateGamesPlayed();
+        assertEquals(4, TextualStatistics.gamesPlayed);
+
+    }
+    @Test
+    public void PBI3_T2_gamePlayed_correct(){
+        TextualStatistics.calculateGamesPlayed();
+        TextualStatistics.calculateGamesPlayed();
+        assertEquals(5, TextualStatistics.gamesPlayed);
+    }
+
+    @Test
+    public void PBI3_T1_winPercentage_correct(){
+        TextualStatistics.winPercentage();
+        assertEquals(1/3, TextualStatistics.winPercentage());
+    }
+    @Test
+    public void PBI3_T2_winPercentage_correct_with_more_gamePlayed(){
+        TextualStatistics.gamesPlayed+=TextualStatistics.gamesPlayed+1;
+        TextualStatistics.winPercentage();
+        assertEquals(1/4, TextualStatistics.winPercentage());
+    }
+    @Test
+    public void PBI3_T1_displayStats(){
+        TextualStatistics.displayStats();
+        assertEquals("Games played: 3\n" +
+                "Win percentage: 0.0\n" +
+                "Current streak: 0\n" +
+                "Max streak: 1", "Games played: 3\n" +
+                "Win percentage: 0.0\n" +
+                "Current streak: 0\n" +
+                "Max streak: 1");
+    }
+
+
+    @Test
     public void PBI28_T1_invalid_moreThan5LettersEntered(){
         assertNull(input.userGuess("GROUND"), "Testing only exactly 5 letters are accepted by game");
     }
