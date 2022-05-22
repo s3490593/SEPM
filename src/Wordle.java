@@ -25,6 +25,9 @@ public class Wordle {
         wordle.startGame();
         String todaysWord = ws.selectRandomWord(ws.createDictionary());
 
+        System.out.println("Welcome user: Administrator");
+        TextualStatistics.displayStats();
+        System.out.println();
         System.out.println("Random word: " + todaysWord);
 
         long startTime = System.currentTimeMillis();
