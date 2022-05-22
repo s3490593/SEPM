@@ -8,12 +8,14 @@ public class unitTesting {
     nextReleaseTime nrtNotify;
     fiveLetters input;
     ValidWord validWord;
+    Wordle wordle;
 
     @BeforeEach
     void setup(){
         userInput = null;
         nrtNotify = new nextReleaseTime();
         validWord = new ValidWord();
+        wordle = new Wordle();
     }
 
     @Test
@@ -139,4 +141,7 @@ public class unitTesting {
     public void PBI29_T2_isWordValid_WordNotExist(){
         assertFalse(validWord.checkValid("aaaaa"),"Testing the word is not exist in the dictionary");
     }
+
+
+
 }

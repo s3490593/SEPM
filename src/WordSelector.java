@@ -16,7 +16,7 @@ public class WordSelector {
         // load data from file
         BufferedReader reader = null;
         try{
-            reader = new BufferedReader(new FileReader("SEPM/dictionary.txt"));
+            reader = new BufferedReader(new FileReader("dictionary.txt"));
             String line = reader.readLine();
 
             while (line != null) {
