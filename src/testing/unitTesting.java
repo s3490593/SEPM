@@ -142,6 +142,9 @@ public class unitTesting {
         assertFalse(validWord.checkValid("aaaaa"),"Testing the word is not exist in the dictionary");
     }
 
-
+    @Test
+    public void PBI27_T4_sixGuesses(){
+       // assertTrue("");
+    }
 
 }
