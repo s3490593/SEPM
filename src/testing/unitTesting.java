@@ -60,7 +60,7 @@ public class unitTesting {
     @Test
     public void PBI3_T1_gamePlayed_correct(){
         TextualStatistics.calculateGamesPlayed();
-        assertEquals(4, TextualStatistics.gamesPlayed);
+        assertEquals(6, TextualStatistics.gamesPlayed,"THE GAME PLAYED NUMBER IS CORRECT");
 
     }
     @Test
