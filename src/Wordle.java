@@ -17,26 +17,15 @@ public class Wordle {
 
     public static List<String> guessedWords = new ArrayList<>();
 
-    public void startGame(){
-        System.out.println("START"); // add date
-        GameRule.displayRules();
-    }
-
     public static void main(String[] args) throws IOException {
         Wordle wordle = new Wordle();
-        wordle.startGame();
-
-
-
+        GameRule.displayRules();
 
     game();
     }
 
     public static void game() throws IOException {
         todaysWord = ws.selectRandomWord(ws.createDictionary());
-        // System.out.println("Random word: " + todaysWord);
-
-        System.out.println("Random word: " + todaysWord);
 
         long startTime = System.currentTimeMillis();
         Scanner keyboard = new Scanner(System.in);
@@ -57,7 +46,7 @@ public class Wordle {
             String guess = null;
             do {
                 if(guessedWords.size()!=0 && guessedWords!=null) {
-                    System.out.println("Previous guesses: " + guessedWords);
+                    System.out.println(guessedWords);
                 }
                 System.out.println("Enter your guess");
                 guess = fiveLetters.userGuess(keyboard.nextLine());
@@ -78,30 +67,18 @@ public class Wordle {
                 nextReleaseTime r = new nextReleaseTime();
                 countdown = r.notify(r.getNextReleaseTime(), true, true, todaysWord, userGuess);
                 System.out.println("Congratulations !");
-                System.out.println("Next Wordle" + countdown);
+                System.out.println("Next Wordle in: " + countdown);
                 break;
-                // Print statistics
             } else {
                 //check all letters in word
                 userGuess = WordMatchUtil.doMatch(userGuess,todaysWord);
                 guessedWords.add(String.join("",userGuess));
 
-                //System.out.println("Else");
                 char c = guess.charAt(0);
                 for (int i = todaysWord.indexOf(c); i >= 0; i = todaysWord.indexOf(c, i + 1)) {
                     temp.setCharAt(i, c);
                 }
-                //  System.out.println("Else");
             }
-
-//            if (guess.length() != 1) {
-//                System.out.println("Guesses must each be a single letter.");
-//                continue;
-//            }
-
-
-
-//            System.out.println(ANSI_GREY + temp.toString() +ANSI_RESET);
         }
         nextReleaseTime r = new nextReleaseTime();
         System.out.println("Too bad today's word is : " + todaysWord);

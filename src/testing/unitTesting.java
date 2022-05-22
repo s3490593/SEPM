@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class unitTesting {
@@ -9,6 +14,7 @@ public class unitTesting {
     fiveLetters input;
     ValidWord validWord;
     Wordle wordle;
+    List <String> guessedWords;
 
     @BeforeEach
     void setup(){
@@ -16,16 +22,17 @@ public class unitTesting {
         nrtNotify = new nextReleaseTime();
         validWord = new ValidWord();
         wordle = new Wordle();
+        guessedWords = new ArrayList<>();
     }
 
     @Test
-    public void PBI2_T1_displayRules(){
+    public void PBI4_T1_displayRules(){
         userInput = "Rules";
         assertEquals("Rules", userInput, "Rules are displayed");
     }
 
     @Test
-    public void PBI2_T2_exitRules(){
+    public void PBI4_T2_exitRules(){
         userInput = "y";
         assertEquals("y", userInput, "Exited the game");
     }
@@ -143,26 +150,48 @@ public class unitTesting {
     }
 
     @Test
-    public void PBI27_T1(){
-        // dummy assertion
-        assertTrue(true);
+    public void PBI27_T1_2GuessAttempts(){
+        guessedWords.add("hello");
+        guessedWords.add("today");
+        assertEquals("scone",input.userGuess("scone"), "Checking a 3rd valid guess is accepted");
     }
 
     @Test
-    public void PBI27_T2(){
-        // dummy assertion
+    public void PBI27_T2_4GuessAttempts_Invalid4LetterWord(){
+        guessedWords.add("hello");
+        guessedWords.add("today");
+        guessedWords.add("scone");
+        guessedWords.add("helps");
+        assertNull(input.userGuess("spam"), "Checking a 4th invalid guess is not accepted");
+
     }
 
     @Test
-    public void PBI27_T3(){
-        // dummy assertion
+    public void PBI27_T3_5Letters_InvalidWord(){
+        guessedWords.add("hello");
+        assertNull(input.userGuess("bsdwa"), "Checking a 2nd invalid guess is not accepted");
     }
 
     @Test
-    public void PBI27_T4(){
-        int expected =5;
-        int actual = 5; // assuming words in string
-        assertEquals(expected, actual);
+    public void PBI27_T4_acceptsValid_6thGuess(){
+        guessedWords.add("hello");
+        guessedWords.add("today");
+        guessedWords.add("scone");
+        guessedWords.add("helps");
+        guessedWords.add("halve");
+        assertEquals("happy", input.userGuess("happy"));
+    }
+
+    @Test
+    public void PBI27_T5_7thGuessNotPossible(){
+        guessedWords.add("hello");
+        guessedWords.add("today");
+        guessedWords.add("scone");
+        guessedWords.add("helps");
+        guessedWords.add("halve");
+        guessedWords.add("goose");
+        input.userGuess("happy");
+        assertEquals(6, guessedWords.size());
     }
 
 }

@@ -24,8 +24,8 @@ public class fiveLetters {
             System.out.println("Guess not found in dictionary");
             return null;
         } else {
-            System.out.println("Your guess '" + guess + "' is in the dictionary");
-            System.out.println("Guess accepted");
+//            System.out.println("Your guess '" + guess + "' is in the dictionary");
+//            System.out.println("Guess accepted");
             return guess;
         }
     }
