@@ -143,8 +143,26 @@ public class unitTesting {
     }
 
     @Test
-    public void PBI27_T4_sixGuesses(){
-       // assertTrue("");
+    public void PBI27_T1(){
+        // dummy assertion
+        assertTrue(true);
+    }
+
+    @Test
+    public void PBI27_T2(){
+        // dummy assertion
+    }
+
+    @Test
+    public void PBI27_T3(){
+        // dummy assertion
+    }
+
+    @Test
+    public void PBI27_T4(){
+        int expected =5;
+        int actual = 5; // assuming words in string
+        assertEquals(expected, actual);
     }
 
 }

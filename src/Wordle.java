@@ -10,12 +10,8 @@ import java.util.Scanner;
 
 public class Wordle {
 
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_GREY = "\u001B[37m";
-    public static final String ANSI_RESET = "\u001B[0m";
-
     public static String countdown;
+    public static String todaysWord;
 
     static WordSelector ws = new WordSelector();
 
@@ -31,8 +27,14 @@ public class Wordle {
         wordle.startGame();
 
 
-        String todaysWord = ws.selectRandomWord(ws.createDictionary());
-       // System.out.println("Random word: " + todaysWord);
+
+
+    game();
+    }
+
+    public static void game() throws IOException {
+        todaysWord = ws.selectRandomWord(ws.createDictionary());
+        // System.out.println("Random word: " + todaysWord);
 
         System.out.println("Random word: " + todaysWord);
 
@@ -47,6 +49,7 @@ public class Wordle {
         } else {
             temp = new StringBuilder();
         }
+
 
         int attempt = 0;
         for (int turn = 0; turn < 6; turn++) {
@@ -88,7 +91,7 @@ public class Wordle {
                 for (int i = todaysWord.indexOf(c); i >= 0; i = todaysWord.indexOf(c, i + 1)) {
                     temp.setCharAt(i, c);
                 }
-              //  System.out.println("Else");
+                //  System.out.println("Else");
             }
 
 //            if (guess.length() != 1) {
@@ -104,5 +107,6 @@ public class Wordle {
         System.out.println("Too bad today's word is : " + todaysWord);
         System.out.println("Next Wordle " + r.getNextReleaseTime());
 
-    }}
+    }
+}
 
